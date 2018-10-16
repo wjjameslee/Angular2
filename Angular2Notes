@@ -1,0 +1,84 @@
+Angular2
+
+What's new from Angular 1?
+	- No more controllers and scope
+	- Components / reusable code
+	- Reduced learning curve
+	- TypeScript & ES2015 / ES6
+	- Better Mobile Support
+	- RxJS & Observables
+
+Go to myapp folder and type npm start to access the example code**
+
+
+
+Component :
+
+import { Component } from '@angular/core';
+
+@Component({
+	selector: 'my-component',
+	template: '<div>Hello my name is {{name}}. <button (click)="sayMyName()"></button></div>'
+})
+
+export class MyComponent {
+	constructor() {
+		this.name = 'Max';
+	}
+
+	sayMyName() {
+		console.log('My name is ', this.name);
+	}
+}
+
+
+@Component is a decorator, which provides metadata
+
+Services in AngularJS2 are used for reusable data services to share between
+components throughout an application
+Refactoring data access to a separate services keeps the component lean and focused on supporting the view
+Services are invariable asynchronous. We can return data as a promise or an observable using RxJS
+
+.ts stands for typescript 
+{{}} - "interpolation"
+
+
+(Good practice to define properties for variables)
+
+export class UserComponent  {
+  name: string;
+  email: string;
+  address: address;
+
+  constructor() {
+    console.log('constructor ran');
+    this.name = 'John Doe';
+    this.email = 'john@gmail.com';
+    this.address = {
+      street: '12 Main St',
+      city: 'Boston',
+      state: 'MA'
+    }
+  }
+}
+
+ interface address {
+ 	street: string;
+ 	city: string;
+ 	state: string;
+ }
+
+
+
+ To use events in Angular2, we use parentheses around the event handler eg. (click)="toggleHobbies()"
+
+ [(ngModel)] binds to a property. Make sure name attribute has the same value as the variable bound by ngModel
+
+
+Services:
+We import what's known as Injectable which imports a service as a dependency
+If you deal with observables, you need to "subscribe to them"
+
+  this.postsService.getPosts().subscribe(posts => {
+    console.log(posts);
+    });
